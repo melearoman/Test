@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/white.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+	<link rel="stylesheet" href="plugin/chalkboard/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Chapter: 1 Solving Linear Equations \
+Section: 1.1 Solving Simple Equations
+
+	Objectives:
+		Students can... 
+	1. Solve linear equations using addition and subtraction. 
+	2. Solve linear equations using multiplication and division. 
+
+	 Essential Question: 
+		How can you use simple equations to solve real-life problems?
+
+	 Math Minutes: 
+		5 min - Math Journal
+		20 min - Lesson 
+		5 min - Exit Ticket
+		15 min - Independent Work
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Math Journal Prompt:  
+	Topic: AFTER HIGH SCHOOL 
+	Tell me about your plans for college, career, and even family.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<!-- .element: style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left" -->
+An <mark>***Equation***</mark> is a statement that two expressions are equal. 
+
+
+A <mark>***Linear equation in one variable***</mark> is an equation that can be written in the form `$ax+b=0$`, where `$a$` and `$b$` are constants and `$a \neq 0$` .
+
+A  <mark>**solution**</mark> of an equation is a value that makes the equation true.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<!-- .element: style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left" -->
+
+<mark>***Inverse operations***</mark> are two operations that undo each other, such as addition and subtraction. When you perform the same inverse operation on each side of an equation, you produce an equivalent equation.
+
+<mark>***Equivalent equations***</mark> are equations that have the same solution(s).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Core Concept
+##### Addition Property of Equality
+><!-- .element: style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left" -->
+>Words: Adding the same number to each side of an equation produces an equivalent equation.
+
+><!-- .element: style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left" -->
+>Algebra: If `$a=b$`, then `$a+c=b+c$`.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+##### Example 1: Solving equations by Addition 
+Solve the equation. Justify each step. 
+<div class="callout callout-color4">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-question-circle" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+a. `$x-3=-5$` 
+
+</div>
+</div>
+<div class="callout-content">
+
+The solution is `$x = -2.$`
+
+</div>
+</div>
+<p style="font-size: 30px">
+Steps:$ 
+\begin{align}
+x-3&=-5 \; \; \; \; \; \;   \text{Write the equation}\\
++3 & \;\;\;\;\;+3 \; \; \; \; \; \; \text{Add 3 to both sides}\\ 
+x &=-2 \; \; \; \; \; \;\text{Simplify}  
+\end{align}
+$
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Core Concept
+##### Subtraction property of Equality
+><!-- .element: style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left" -->
+>Words: Subtracting the same number to each side of an equation produces an equivalent equation. 
+
+><!-- .element: style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left" -->
+>Algebra: If `$a=b$`, then `$a-c=b-c$`.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+##### Example 2: Solving equations by Subtraction
+Solve the equation. Justify each step. 
+
+<div class="callout callout-color4">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-question-circle" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+b. `$0.9=y+2.8$`
+
+</div>
+</div>
+<div class="callout-content">
+
+The solution is `$y = -1.9$`.
+
+</div>
+</div>
+<p style="font-size: 30px">
+Steps:$ 
+\begin{align}
+0.9&=y+2.8 \; \; \; \; \; \;   \text{Write the equation}\\
+-2.8 & \;\;\;\;\;\;\;\;-2.8 \; \; \; \; \; \; \text{Subtract 2.8 to both sides}\\ 
+-1.9 &= y \; \; \; \; \; \;\; \; \; \; \; \; \; \; \;  \text{Simplify}  
+\end{align}
+$
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Monitoring Progress
+Solve the equation. Justify each step. 
+1. `$n+3=-7$`
+2. `$g-\frac{1}{3}=-\frac{2}{3}$`
+3. `$-6.5=p+3.9$`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Core Concept
+##### Multiplication Property of Equality
+><!-- .element: style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left" -->
+>Words: Multiplying the same number to each side of an equation produces an equivalent equation. 
+
+><!-- .element: style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left" -->
+Algebra: If `$a=b$`, then `$a\cdot c=b\cdot c$`.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+##### Example 3: Solving equations by Multiplication
+Solve the equation. Justify each step. 
+
+<div class="callout callout-color4">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-question-circle" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+a. `$-\frac{n}{5}=-3$` 
+
+</div>
+</div>
+<div class="callout-content">
+
+The solution is `$n=15$`.
+
+</div>
+</div>
+<p style="font-size: 30px">
+Steps:$ 
+\begin{align}
+-\frac{n}{5}&=-3 \; \; \; \; \; \;\; \; \; \; \; \;\;   \text{Write the equation}\\
+-5\cdot -\frac{n}{5}&=-3 \cdot -5 \; \; \; \; \; \; \text{Multiply -5 to both sides}\\ 
+n &= 15 \; \; \; \; \; \;\; \; \; \; \; \; \; \; \;  \text{Simplify}  
+\end{align}
+$
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Core Concept
+##### Division property of Equality
+><!-- .element: style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left" -->
+>Words: Dividing the same number to each side of an equation produces an equivalent equation. 
+
+><!-- .element: style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left" -->
+>Algebra: If `$a=b$`, then `$\frac{a}{c}=\frac{b}{c}$`.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+##### Example 4: Solving equations by Division
+Solve the equation. Justify each step.
+<div class="callout callout-color4">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-question-circle" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+b. `$\pi x=-2\pi$`
+
+</div>
+</div>
+<div class="callout-content">
+
+The solution is `$x=-2$`.
+
+</div>
+</div>
+<p style="font-size: 30px">
+Steps: $ 
+\begin{align}
+\pi x&=-2\pi \; \; \; \; \;  \text{Write the equation}\\
+\frac{\pi x}{\pi}&=\frac{-2\pi}{\pi} \; \; \; \; \; \; \text{Divide `$\pi$` to both sides}\\ 
+x&= -2 \; \; \; \; \; \;\; \; \;\; \; \;\; \;  \text{Simplify} 
+\end{align}
+$
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#####  Example 5: Solving equations by Division
+Solve each equation. Justify each step.
+<div class="callout callout-color4">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-question-circle" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+c. `$1.3z=5.2$`
+
+</div>
+</div>
+<div class="callout-content">
+
+The solution is `$z=4$`.
+
+</div>
+</div>
+<p style="font-size: 30px">
+Steps: $ 
+\begin{align}
+1.3z &=5.2 \; \; \; \; \;\;\;  \text{Write the equation}\\
+\frac{1.3z}{1.3}&=\frac{5.2}{1.3} \; \; \; \; \; \; \text{Divide 1.3 to both sides}\\ 
+z&= 4 \; \; \; \; \; \;\; \; \;\;   \text{Simplify} 
+\end{align}
+$
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Monitoring Progress
+Solve the equation. Justify each step. 
+1. `$\frac{y}{3}=6$`
+2. `$9\pi = \pi x$`
+3. `$0.05w=1.4$`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Exit Ticket: 
+ 
+ 1.  Describe in words how to solve a one-step equation. 
+
+ 2. Solve for x:  `$-13.8 = x-4.3$`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Challenge Problem:
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### New Homework:
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+	<script src="plugin/chalkboard/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealChalkboard, 
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{ icon: '<i class="fa fa-pen-square"></i>',
+				title: 'Toggle chalkboard (B)',
+				action: 'RevealChalkboard.toggleChalkboard();'
+				},
+				{ icon: '<i class="fa fa-pen"></i>',
+				title: 'Toggle notes canvas (C)',
+				action: 'RevealChalkboard.toggleNotesCanvas();'
+				},
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":true,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
